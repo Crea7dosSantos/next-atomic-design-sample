@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import React from 'react'
 import fetch from 'isomorphic-unfetch'
-import Layout, { siteTitle } from '../components/templates/layout'
+import Layout, { siteTitle } from '../components/layout'
 import utils from '../../styles/utils.module.scss'
 
 export default function Home({ blogs }) {
