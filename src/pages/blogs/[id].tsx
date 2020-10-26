@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-unfetch'
 import { getBlogs, getBlogBy } from '../../service/blogs'
 
 export default function BlogDetail({ blog }) {
