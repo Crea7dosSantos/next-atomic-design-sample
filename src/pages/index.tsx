@@ -12,7 +12,7 @@ export default function Home({ blogs }) {
         <title>{siteTitle}</title>
       </Head>
       <section className={utils.headingMd}>
-        <p>[Your Self Introduction]</p>
+        <p>[Crea7dosSantosのサンプルブログ一覧]</p>
         <div>
           <h2>最新の記事</h2>
           <div>
