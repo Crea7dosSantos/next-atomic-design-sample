@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import React from 'react'
-import fetch from 'isomorphic-unfetch'
 import Layout, { siteTitle } from '../components/layout'
 import utils from '../../styles/utils.module.scss'
+import { getBlogs } from '../service/blogs'
 
 export default function Home({ blogs }) {
   return (
@@ -34,13 +34,7 @@ export default function Home({ blogs }) {
 }
 
 export const getStaticProps = async () => {
-  const key = {
-    headers: { 'X-API-KEY': process.env.API_KEY }
-  }
-  const res = await fetch(
-    'https://next-jamstack.microcms.io/api/v1/blogs',
-    key
-  )
+  const res = await getBlogs()
   const data = await res.json()
 
   return {
