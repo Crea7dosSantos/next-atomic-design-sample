@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-unfetch'
+import { getBlogs, getBlogBy } from '../../service/blogs'
 
 export default function BlogDetail({ blog }) {
     return (
@@ -13,29 +14,17 @@ export default function BlogDetail({ blog }) {
 }
 
 export const getStaticPaths = async () => {
-    const key = {
-        headers: { 'X-API-KEY': process.env.API_KEY }
-    }
-    const res = await fetch(
-        'https://next-jamstack.microcms.io/api/v1/blogs',
-        key
-    )
+    const res = await getBlogs()
     const repos = await res.json()
 
     const paths = repos.contents.map(repo => `/blogs/${repo.id}`)
     return { paths, fallback: false }
 }
 
-export const getStaticProps = async context => {
-    const id = context.params.id
+export const getStaticProps = async contents => {
+    const id = contents.params.id
 
-    const key = {
-        headers: { 'X-API-KEY': process.env.API_KEY }
-    }
-    const res = await fetch(
-        `https://next-jamstack.microcms.io/api/v1/blogs/${id}`,
-        key
-    )
+    const res = await getBlogBy(id)
     const blog = await res.json()
 
     return {
