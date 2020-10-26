@@ -1,5 +1,3 @@
-import fetch from 'isomorphic-unfetch'
-
 const key = {
     headers: { 'X-API-KEY': process.env.API_KEY }
 }
